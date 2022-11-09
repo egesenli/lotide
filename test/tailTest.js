@@ -1,26 +1,22 @@
+const assert = require('chai').assert;
 const tail = require('../tail');
-const assertArraysEqual = require('../assertArraysEqual');
 
-const result = tail(["Hello", "Lighthouse", "Labs"]);
-assertArraysEqual(result, ["Lighthouse", "Labs"]);
-
-console.log("----");
-
-// Test Case: Check the original array
 const words = ["Yo Yo", "Lighthouse", "Labs"];
-tail(words); // no need to capture the return value since we are not checking it
-assertArraysEqual(words.length, 3); // original array should still have 3 elements!
-
-console.log("----");
-
-// Test Case: Check the single element array
 const words2 = ["Yo Yo"];
-tail(words2); // no need to capture the return value since we are not checking it
-assertArraysEqual(words2.length, 3); // original array should still have 3 elements!
-
-console.log("----");
-
-// Test Case: Check the single element array
 const words3 = [];
-tail(words3); // no need to capture the return value since we are not checking it
-assertArraysEqual(words3.length, 3); // original array should still have 3 elements!
+
+
+describe("#tail", () => {
+  it("returns ['Lighthouse', 'Labs'] for ['Hello', 'Lighthouse', 'Labs']", () => {
+    assert.deepEqual(tail(["Hello", "Lighthouse", "Labs"]), ["Lighthouse", "Labs"]);
+  });
+  it("returns 3 for words.length", () => {
+    assert.strictEqual((words.length), 3);
+  });
+  it("returns 0 for tail(words2).length", () => {
+    assert.strictEqual(tail(words2).length, 0);
+  });
+  it("returns 0 for tail(words3).length", () => {
+    assert.strictEqual(tail(words3).length, 0);
+  });
+});
