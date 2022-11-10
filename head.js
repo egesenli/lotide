@@ -1,8 +1,8 @@
-const head = function(array) {
+const head = function (array) {
 
-    arrayElement = array.find(element=>element!==undefined);
+  arrayElement = array.find(element => element !== undefined);
 
-    return arrayElement;
+  return arrayElement;
 
 }
 
